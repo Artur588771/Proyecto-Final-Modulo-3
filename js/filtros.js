@@ -67,3 +67,16 @@ catPoder.forEach(poder => {
     buscarPoder(poder.textContent.toUpperCase());
   });
 })
+document.querySelector("#ordenarAZ").addEventListener("click",()=>{
+  campeones.sort(function(a,b){
+    return a.nombre > b.nombre ? 1 : -1;    
+  });
+  mostrar(campeones);
+})
+
+document.querySelector("#ordenarZA").addEventListener("click",()=>{
+  campeones.sort(function(a,b){
+    return a.nombre > b.nombre ? 1 : -1;    
+  });
+  mostrar(campeones.reverse());
+})
