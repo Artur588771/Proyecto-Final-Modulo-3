@@ -8,6 +8,9 @@ let buscar = (evt) => {
     mostrar(filtrados);
   };
 
+  document.querySelector("#buscarForm button").addEventListener("click", buscar);
+  document.querySelector("#inputBuscar").addEventListener("keyup", buscar);
+
   let buscarCategoria = (categoria,valCategoria) => {
     console.log(categoria);
     console.log(valCategoria);
