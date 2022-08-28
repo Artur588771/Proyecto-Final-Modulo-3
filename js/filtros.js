@@ -8,65 +8,37 @@ let buscar = (evt) => {
     mostrar(filtrados);
   };
 
-let buscarRol = (rolCampeon) => {
-  let filtro = campeones.filter((campeon) =>{
-    return campeon.rol==rolCampeon;    
-  })
-  mostrar(filtro);
-} 
-
-let buscarRegion = (regionCampeon) => {
-  let filtro = campeones.filter((campeon) =>{
-    return campeon.region==regionCampeon;    
-  })
-  mostrar(filtro);
-}
-
-let buscarDificultad = (difiCampeon) => {
-  let filtro = campeones.filter((campeon) =>{
-    return campeon.dificultad==difiCampeon;    
-  })
-  mostrar(filtro);
-}
-
-let buscarPoder = (poderCampeon) => {
-  let filtro = campeones.filter((campeon) =>{
-    return campeon.poder==poderCampeon;    
-  })
-  mostrar(filtro);
-}
-
-  //document.querySelector("#buscarForm").addEventListener("submit", buscar);
-  document.querySelector("#buscarForm button").addEventListener("click", buscar);
-  document.querySelector("#inputBuscar").addEventListener("keyup", buscar);
+  let buscarCategoria = (categoria,valCategoria) => {
+    console.log(categoria);
+    console.log(valCategoria);
+    let filtro = campeones.filter((campeon) =>{
+      console.log(campeon.categoria);
+      if(categoria=="rol")return campeon.rol==valCategoria;    
+      if(categoria=="region")return campeon.region==valCategoria;
+      if(categoria=="dificultad")return campeon.dificultad==valCategoria;
+      if(categoria=="poder")return campeon.poder==valCategoria;
+    })
+    
+    mostrar(filtro);
+  } 
   
-const catRol =  document.querySelectorAll(".rol");
-catRol.forEach(rol => {
-  rol.addEventListener("click", function () {
-    buscarRol(rol.textContent.toUpperCase());
-  });
-})
+  let opcionCampeon = (opcCategorias,clasARR) => {
+    console.log(opcCategorias);
+    console.log(clasARR);
+    const catCampeon =  document.querySelectorAll(clasARR);
+    console.log(catCampeon);
+    catCampeon.forEach(valor => {
+      valor.addEventListener("click", function () {
+        buscarCategoria(opcCategorias,valor.textContent.toUpperCase());
+      })
+    });
+  }
+  
+  opcionCampeon("rol",".rol");
+  opcionCampeon("region",".region");
+  opcionCampeon("dificultad",".difi");
+  opcionCampeon("poder",".poder");  
 
-const catRegion =  document.querySelectorAll(".region");
-catRegion.forEach(region => {
-  region.addEventListener("click", function () {
-    buscarRegion(region.textContent.toUpperCase());
-  });
-})
-
-const catDificultad =  document.querySelectorAll(".difi");
-catDificultad.forEach(difi => {
-  difi.addEventListener("click", function () {
-    buscarDificultad(difi.textContent.toUpperCase());
-  });
-})
-
-const catPoder =  document.querySelectorAll(".poder");
-catPoder.forEach(poder => {
-  poder.addEventListener("click", function () {
-    buscarPoder(poder.textContent.toUpperCase());
-  });
-})
 document.querySelector("#ordenarAZ").addEventListener("click",()=>{
   campeones.sort(function(a,b){
     return a.nombre > b.nombre ? 1 : -1;    
@@ -79,4 +51,4 @@ document.querySelector("#ordenarZA").addEventListener("click",()=>{
     return a.nombre > b.nombre ? 1 : -1;    
   });
   mostrar(campeones.reverse());
-})
+}) 
