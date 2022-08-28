@@ -52,3 +52,5 @@ document.querySelector("#ordenarZA").addEventListener("click",()=>{
   });
   mostrar(campeones.reverse());
 }) 
+
+document.querySelector("#todos").addEventListener("click", function () {mostrar(campeones)});

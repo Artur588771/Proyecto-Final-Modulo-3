@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Campeones</a>
+                <a class="nav-link active" aria-current="page" href="#" id="todos">Campeones</a>
               </li>              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,6 +95,35 @@
     <main>
         <div class="row row-cols-4" id="boxcampeones">            
         </div>
+        <!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">DESCRIPCION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h5 id="DESCRIPCION"></h5>
+      <figure class="d-flex justify-content-center">
+        <img src="" alt="" id="imagenCampeon" class="d-flex justify-content-center">
+      </figure>
+      <ul>        
+        <li id="liNombre"></li>
+        <li id="liRegion"></li>
+        <li id="liPoder"></li>
+        <li id="liRol"></li>
+        <li id="liDificultad"></li>
+        <li id="liCarril"></li>
+      </ul>      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Agregar a Favoritos</button>
+      </div>
+    </div>
+  </div>
+</div>
     </main>
     <script defer src="js/app.js"></script>
     <script defer src="js/filtros.js"></script>
