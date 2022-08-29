@@ -51,15 +51,14 @@ let mostrar = (campeonesArr) => {
             <p class="card-text">${region}</p>
           </div>
           <div class="col d-flex justify-content-end" id="mostrarFavoritos">            
-            
+          
           </div>   
           </div>
         </div>
       </div>`;
-
-      cardCampeon.addEventListener("click", () => verModal(nombre));
-        
+      
       boxcampeones.appendChild(cardCampeon);      
+      cardCampeon.addEventListener("click", () => verModal(nombre));        
        
     });
     
@@ -74,6 +73,7 @@ const llenarModal = (filtradosC) => {
   liDificultad.innerText = `DIFICULTAD: ${dificultad}`;
   liCarril.innerText = `CARRIL: ${carril}`;
   imagenCampeon.setAttribute("src",imagen);
+  
   const wr = JSON.parse(localStorage.getItem('favoritos'));  
   for (let i in wr) {
     if (wr[i]==nombre){      

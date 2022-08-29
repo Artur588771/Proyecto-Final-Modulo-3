@@ -7,9 +7,7 @@ const agregarFavorito = (e) => {
       favoritos.push(id);
       localStorage.setItem("favoritos", JSON.stringify(favoritos));
     }
-
-    //iconoFavorito.style.visibility = 'visible';
-
+    
   };
   
   agregarFavoritos.addEventListener("click", agregarFavorito);
