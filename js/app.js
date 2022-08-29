@@ -5,8 +5,34 @@ const liRol = document.querySelector("#liRol");
 const liDificultad = document.querySelector("#liDificultad");
 const liCarril = document.querySelector("#liCarril"); 
 const imagenCampeon = document.querySelector("#imagenCampeon"); 
+const agregarFavoritos = document.querySelector("#agregarFavoritos");
+const favoritoStorage = localStorage.getItem("favoritos");
+const lifavorito = document.querySelector("#lifavorito"); 
 
 let campeones=[];
+
+/*const cargarFavoritos = () => {    
+  //let favoritoIcono = document.querySelectorAll(".estrella");
+  //let starsArray = Array.from(favoritoIcono);
+  
+  if(favoritoStorage != null){
+    console.log('entre a cargar favoritos');
+    favoritoStorage.forEach(element => {      
+      const divFavorito=document.createElement('div');
+      divFavorito.innerHTML=`<i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`; 
+      mostrarFavoritos.appendChild(divFavorito);
+    })  
+  }
+  const wr = JSON.parse(localStorage.getItem('favoritos'));  
+  for (let i in wr) {
+    if (wr[i]==nombre){
+      const divFavorito=document.createElement('div');
+      divFavorito.innerHTML=`<i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`; 
+      mostrarFavoritos.appendChild(divFavorito);
+    }    
+  }
+
+};*/
 
 let mostrar = (campeonesArr) => {
     document.querySelector("#boxcampeones").innerHTML = "";
@@ -20,15 +46,23 @@ let mostrar = (campeonesArr) => {
         <a href="#" data-bs-toggle="modal" data-bs-target="#infoModal" ><img src="${imagen}" class="img-fluid object-fit"></a>
         <div class="card-body">
           <h5 class="card-title">${nombre}</h5>
-          <p class="card-text">${region}</p>
+          <div class="row">
+          <div class="col">
+            <p class="card-text">${region}</p>
+          </div>
+          <div class="col d-flex justify-content-end" id="mostrarFavoritos">            
+            
+          </div>   
+          </div>
         </div>
       </div>`;
 
       cardCampeon.addEventListener("click", () => verModal(nombre));
-
-      boxcampeones.appendChild(cardCampeon);
-        //console.log(cardBanda);
+        
+      boxcampeones.appendChild(cardCampeon);      
+       
     });
+    
 }
 
 const llenarModal = (filtradosC) => {      
@@ -39,7 +73,13 @@ const llenarModal = (filtradosC) => {
   liRol.innerText = `ROL: ${rol}`;
   liDificultad.innerText = `DIFICULTAD: ${dificultad}`;
   liCarril.innerText = `CARRIL: ${carril}`;
-  imagenCampeon.setAttribute("src",imagen)
+  imagenCampeon.setAttribute("src",imagen);
+  const wr = JSON.parse(localStorage.getItem('favoritos'));  
+  for (let i in wr) {
+    if (wr[i]==nombre){      
+      lifavorito.innerHTML=`<span>FAVORITO: </span><i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`;       
+    }    
+  }
 };
 
 const verModal = (nombreC) => {
@@ -50,6 +90,8 @@ const verModal = (nombreC) => {
   liRol.innerText = "";
   liDificultad.innerText = "";
   liCarril.innerText = "";
+  lifavorito.innerHTML="";
+  agregarFavoritos.setAttribute("id",nombreC)
 
   let filtradosUnico = campeones.filter((campeon) => {      
     return campeon.nombre==nombreC;    
