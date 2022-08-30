@@ -57,3 +57,22 @@ document.querySelector("#ordenarZA").addEventListener("click",()=>{
 }) 
 
 document.querySelector("#todos").addEventListener("click", function () {mostrar(campeones)});
+
+let mostrarFavoritos = () => {
+  let favoritosARR = [];
+
+  const favCampeon = JSON.parse(localStorage.getItem('favoritos'));
+  for(let i in favCampeon){    
+    for(let x in campeones){
+      if(favCampeon[i]==campeones[x].id) {
+        console.log(favCampeon[i]);
+        console.log(campeones[x].id);
+        favoritosARR[i]=campeones[x];
+      }
+    }    
+  }  
+ console.log(favoritosARR);
+  mostrar(favoritosARR);
+};
+
+document.querySelector("#campFavoritos").addEventListener("click", mostrarFavoritos);

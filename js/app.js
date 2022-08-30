@@ -38,7 +38,7 @@ let mostrar = (campeonesArr) => {
     document.querySelector("#boxcampeones").innerHTML = "";
     console.log(campeonesArr);
     campeonesArr.forEach(campeon => {
-        const {nombre,region,imagen} = campeon;                
+        const {nombre,region,imagen,id} = campeon;                
         const cardCampeon=document.createElement('div');
         cardCampeon.classList.add('col','mb-3');
         cardCampeon.innerHTML=`
@@ -50,7 +50,7 @@ let mostrar = (campeonesArr) => {
           <div class="col">
             <p class="card-text">${region}</p>
           </div>
-          <div class="col d-flex justify-content-end" id="mostrarFavoritos">            
+          <div class="col d-flex justify-content-end" id="${id}" data-favorito="normal">            
           
           </div>   
           </div>
@@ -58,14 +58,14 @@ let mostrar = (campeonesArr) => {
       </div>`;
       
       boxcampeones.appendChild(cardCampeon);      
-      cardCampeon.addEventListener("click", () => verModal(nombre));        
+      cardCampeon.addEventListener("click", () => verModal(id));        
        
     });
     
 }
 
 const llenarModal = (filtradosC) => {      
-  const {nombre,region,poder,rol,carril,dificultad,imagen} = filtradosC[0];  
+  const {nombre,region,poder,rol,carril,dificultad,imagen,id} = filtradosC[0];  
   liNombre.innerText = `NOMBRE: ${nombre}`;
   liRegion.innerText = `REGION: ${region}`;
   liPoder.innerText = `DAÑO: ${poder}`;
@@ -74,16 +74,16 @@ const llenarModal = (filtradosC) => {
   liCarril.innerText = `CARRIL: ${carril}`;
   imagenCampeon.setAttribute("src",imagen);
   
-  const wr = JSON.parse(localStorage.getItem('favoritos'));  
-  for (let i in wr) {
-    if (wr[i]==nombre){      
+  const favCampeon = JSON.parse(localStorage.getItem('favoritos'));  
+  for (let i in favCampeon) {
+    if (favCampeon[i]==id){      
       lifavorito.innerHTML=`<span>FAVORITO: </span><i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`;       
     }    
   }
 };
 
-const verModal = (nombreC) => {
-  console.log(nombreC);
+const verModal = (idC) => {
+  console.log(idC);
   liNombre.innerText = "";
   liRegion.innerText = "";
   liPoder.innerText = "";
@@ -91,10 +91,10 @@ const verModal = (nombreC) => {
   liDificultad.innerText = "";
   liCarril.innerText = "";
   lifavorito.innerHTML="";
-  agregarFavoritos.setAttribute("id",nombreC)
-
+  agregarFavoritos.setAttribute("id",idC)
+  
   let filtradosUnico = campeones.filter((campeon) => {      
-    return campeon.nombre==nombreC;    
+    return campeon.id==idC;    
   });
   console.log(filtradosUnico);
   const {region,poder,rol,carril,dificultad} = filtradosUnico[0];  
