@@ -51,7 +51,7 @@ let mostrar = (campeonesArr) => {
             <p class="card-text">${region}</p>
           </div>
           <div class="col d-flex justify-content-end" data-favorito="normal">            
-          
+          <i class="em em-star" id="${nombre}" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:hidden;"></i>;
           </div>   
           </div>
         </div>
@@ -75,11 +75,21 @@ const llenarModal = (filtradosC) => {
   imagenCampeon.setAttribute("src",imagen);
   
   const favCampeon = JSON.parse(localStorage.getItem('favoritos'));  
+  if(favCampeon.indexOf(id) >=0){
+    lifavorito.innerHTML=`<span>FAVORITO: </span><i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`;
+    document.querySelector(`#${id}`).innerText='Eliminar de Favoritos';    
+  }else{
+    document.querySelector(`#${id}`).innerText='Agregar a Favoritos';
+  }
+
+  /*
   for (let i in favCampeon) {
     if (favCampeon[i]==id){      
       lifavorito.innerHTML=`<span>FAVORITO: </span><i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`;       
-    }    
-  }
+      //agregarFavoritos.innerText='Eliminar de Favoritos';
+      document.querySelector(`#${id}`).innerText='Eliminar de Favoritos';
+    }   
+  }*/
 };
 
 const verModal = (idC) => {
