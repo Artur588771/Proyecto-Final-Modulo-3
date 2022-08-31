@@ -43,7 +43,7 @@ let mostrar = (campeonesArr) => {
         const cardCampeon=document.createElement('div');
         cardCampeon.classList.add('col','mb-3');
         cardCampeon.innerHTML=`
-        <div class="card">
+        <div class="card bordocard">
         <a href="#" data-bs-toggle="modal" data-bs-target="#infoModal" ><img src="${imagen}" class="img-fluid object-fit"></a>
         <div class="card-body">
           <h5 class="card-title">${nombre}</h5>

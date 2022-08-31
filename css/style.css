@@ -1,0 +1,31 @@
+.barranavega{
+    background-color: #4DC3FF;
+}
+
+.nav-link{
+    color:black;    
+}
+
+.navbar-brand{
+    color: #021C1E;
+    font-size:larger;
+    font-weight: bold;    
+}
+
+.bordocard{
+   border-color: #4DC3FF;
+   
+}
+
+.fondocontainer{
+    background-color: #E6FFFF;
+}
+
+.sombraModal{
+    box-shadow: 0px 8px 16px 0px #4DC3FF;
+}
+
+.linegrita{
+    font-weight: bold;
+    color: #1995AD;   
+}

@@ -7,11 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <title>Wild Rift</title>
 </head>
 <body>
-    <header class="fixed-top">
-    <nav class="navbar navbar-expand-lg bg-light">
+    <header>
+    <nav class="navbar navbar-expand-lg barranavega">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Wild Rift</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,35 +91,35 @@
             </ul>            
             <form class="d-flex" id="buscarForm">
               <input class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search" id="inputBuscar">              
-              <button class="btn btn-outline-success" type="button">Buscar</button>
+              <button class="btn btn-outline-primary" type="button">Buscar</button>
             </form>            
           </div>
         </div>
       </nav>
     </header>
-    <main class="container">
-        <div class="row row-cols-2 row-cols-lg-4 mt-5" id="boxcampeones">            
+    <main class="container mt-5 fondocontainer">
+        <div class="row row-cols-2 row-cols-lg-4" id="boxcampeones">            
         </div>
         <!-- Modal -->
 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">DESCRIPCION</h5>
+        <h5 class="modal-title linegrita" id="exampleModalLabel">DESCRIPCION</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <h5 id="DESCRIPCION"></h5>
       <figure class="d-flex justify-content-center">
-        <img src="" alt="" id="imagenCampeon" class="d-flex justify-content-center">
+        <img src="" alt="" id="imagenCampeon" class="d-flex justify-content-center sombraModal">
       </figure>
       <ul>        
-        <li id="liNombre"></li>
-        <li id="liRegion"></li>
-        <li id="liPoder"></li>
-        <li id="liRol"></li>
-        <li id="liDificultad"></li>
-        <li id="liCarril"></li>        
+        <li id="liNombre" class="linegrita"></li>
+        <li id="liRegion" class="linegrita"></li>
+        <li id="liPoder" class="linegrita"></li>
+        <li id="liRol" class="linegrita"></li>
+        <li id="liDificultad" class="linegrita"></li>
+        <li id="liCarril" class="linegrita"></li>        
       </ul>
       <p id="lifavorito"></p>      
       </div>
