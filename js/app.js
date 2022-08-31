@@ -8,6 +8,7 @@ const imagenCampeon = document.querySelector("#imagenCampeon");
 const agregarFavoritos = document.querySelector("#agregarFavoritos");
 const favoritoStorage = localStorage.getItem("favoritos");
 const lifavorito = document.querySelector("#lifavorito"); 
+const favoritos = favoritoStorage === null ? [] : JSON.parse(favoritoStorage);
 
 let campeones=[];
 
@@ -50,16 +51,20 @@ let mostrar = (campeonesArr) => {
           <div class="col">
             <p class="card-text">${region}</p>
           </div>
-          <div class="col d-flex justify-content-end" data-favorito="normal">            
-          <i class="em em-star" id="${nombre}" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:hidden;"></i>;
+          <div class="col d-flex justify-content-end">            
+          <i class="em em-star" id="${nombre.replace(/\s+/g, '')}" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:hidden;"></i>
           </div>   
           </div>
         </div>
-      </div>`;
-      
+      </div>`;      
       boxcampeones.appendChild(cardCampeon);      
-      cardCampeon.addEventListener("click", () => verModal(id));        
-       
+      cardCampeon.addEventListener("click", () => verModal(id));      
+      //const favCampeon = JSON.parse(localStorage.getItem('favoritos'));
+      if(favoritos != null){
+        if(favoritos.indexOf(id) >=0){
+          document.querySelector(`#${nombre.replace(/\s+/g, '')}`).style.visibility = "visible";
+        } 
+      }        
     });
     
 }
@@ -73,15 +78,17 @@ const llenarModal = (filtradosC) => {
   liDificultad.innerText = `DIFICULTAD: ${dificultad}`;
   liCarril.innerText = `CARRIL: ${carril}`;
   imagenCampeon.setAttribute("src",imagen);
+  agregarFavoritos.setAttribute("data-favoritos",nombre.replace(/\s+/g, ''))
   
-  const favCampeon = JSON.parse(localStorage.getItem('favoritos'));  
-  if(favCampeon.indexOf(id) >=0){
+  //const favCampeon = JSON.parse(localStorage.getItem('favoritos')); 
+  if(favoritos != null){ 
+  if(favoritos.indexOf(id) >=0){
     lifavorito.innerHTML=`<span>FAVORITO: </span><i class="em em-star" aria-role="presentation" aria-label="WHITE MEDIUM STAR" style="visibility:visible;"></i>`;
     document.querySelector(`#${id}`).innerText='Eliminar de Favoritos';    
   }else{
     document.querySelector(`#${id}`).innerText='Agregar a Favoritos';
   }
-
+}
   /*
   for (let i in favCampeon) {
     if (favCampeon[i]==id){      
