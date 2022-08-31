@@ -50,7 +50,7 @@ let mostrar = (campeonesArr) => {
           <div class="col">
             <p class="card-text">${region}</p>
           </div>
-          <div class="col d-flex justify-content-end" id="${id}" data-favorito="normal">            
+          <div class="col d-flex justify-content-end" data-favorito="normal">            
           
           </div>   
           </div>
