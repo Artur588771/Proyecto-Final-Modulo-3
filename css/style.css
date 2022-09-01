@@ -1,5 +1,5 @@
 .barranavega{
-    background-color: #4DC3FF;
+    background-color: #4DC3FF;    
 }
 
 .nav-link{
@@ -17,8 +17,9 @@
    
 }
 
-.fondocontainer{
+.ajusteContainer{
     background-color: #E6FFFF;
+    margin-top: 10vh;
 }
 
 .sombraModal{
