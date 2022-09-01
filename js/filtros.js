@@ -33,19 +33,16 @@ let buscar = (evt) => {
   opcionCampeon("dificultad",".difi");
   opcionCampeon("poder",".poder");  
 
-document.querySelector("#ordenarAZ").addEventListener("click",()=>{
-  campeones.sort(function(a,b){
-    return a.nombre > b.nombre ? 1 : -1;    
-  });
-  mostrar(campeones);
-})
+  let ordenarCampeones = (arregloCamp,orden) => {
+    arregloCamp.sort(function(a,b){
+      return a.nombre > b.nombre ? 1 : -1;    
+    });
+    if(orden=='ascendente') mostrar(arregloCamp);
+    if(orden=='descendente') mostrar(arregloCamp.reverse());
+  }
 
-document.querySelector("#ordenarZA").addEventListener("click",()=>{
-  campeones.sort(function(a,b){
-    return a.nombre > b.nombre ? 1 : -1;    
-  });
-  mostrar(campeones.reverse());
-}) 
+document.querySelector("#ordenarAZ").addEventListener("click", function () {ordenarCampeones(campeones,'ascendente')});
+document.querySelector("#ordenarZA").addEventListener("click", function () {ordenarCampeones(campeones,'descendente')});
 
 document.querySelector("#todos").addEventListener("click", function () {mostrar(campeones)});
 
@@ -63,4 +60,3 @@ let mostrarFavoritos = () => {
 };
 
 document.querySelector("#campFavoritos").addEventListener("click", mostrarFavoritos);
-
